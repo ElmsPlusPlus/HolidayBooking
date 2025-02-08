@@ -134,17 +134,5 @@ namespace HolidayBooking.Tests
 
             hotelsData.Hotels.Should().NotBeNull();
         }
-
-        public class FlightsData
-        {
-            [JsonProperty("Flight_Data")]
-            public List<FlightData> Flights { get; set; }
-        }
-
-        public class HotelsData
-        {
-            [JsonProperty("Hotel_Data")]
-            public List<HotelData> Hotels { get; set; }
-        }
     }
 }
