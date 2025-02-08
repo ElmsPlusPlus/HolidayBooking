@@ -1,12 +1,20 @@
-﻿namespace HolidayBooking
+﻿using Newtonsoft.Json;
+
+namespace HolidayBooking
 {
     public class HotelData
     {
-        public int id { get; set; }
-        public string name { get; set; }
-        public string arrival_date { get; set; }
-        public int pricepernight { get; set; }
-        public string[] local_airports { get; set; }
-        public int nights { get; set; }
+        [JsonProperty("id")]
+        public int ID { get; set; }
+        [JsonProperty("name")]
+        public string Name { get; set; }
+        [JsonProperty("arrival_date")]
+        public string ArrivalDate { get; set; }
+        [JsonProperty("price_per_night")]
+        public int PricePerNight { get; set; }
+        [JsonProperty("local_airports")]
+        public string[] LocalAirports { get; set; }
+        [JsonProperty("nights")]
+        public int Nights { get; set; }
     }
 }

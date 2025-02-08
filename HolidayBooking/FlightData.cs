@@ -1,12 +1,20 @@
-﻿namespace HolidayBooking
+﻿using Newtonsoft.Json;
+
+namespace HolidayBooking
 {
     public class FlightData
     {
-        public int id { get; set; }
-        public string airline { get; set; }
-        public string from { get; set; }
-        public string to { get; set; }
-        public int price { get; set; }
-        public string departure_date { get; set; }
+        [JsonProperty("id")]
+        public int ID { get; set; }
+        [JsonProperty("airline")]
+        public string Airline { get; set; }
+        [JsonProperty("from")]
+        public string From { get; set; }
+        [JsonProperty("to")]
+        public string To { get; set; }
+        [JsonProperty("price")]
+        public int Price { get; set; }
+        [JsonProperty("departure_date")]
+        public string DepartureDate { get; set; }
     }
 }

@@ -46,73 +46,73 @@ namespace HolidayBooking.Tests
         [Fact]
         public void FlightDataIDIsAnInteger()
         {
-            Assert.IsType<int>(flightData.id);
+            Assert.IsType<int>(flightData.ID);
         }
 
         [Fact]
         public void FlightDataAirlineIsAString()
         {
-            flightData.airline.Should().BeOfType<string>();
+            flightData.Airline.Should().BeOfType<string>();
         }
 
         [Fact]
         public void FlightDataFromIsAString()
         {
-            flightData.from.Should().BeOfType<string>();
+            flightData.From.Should().BeOfType<string>();
         }
 
         [Fact]
         public void FlightDataToIsAString()
         {
-            flightData.to.Should().BeOfType<string>();
+            flightData.To.Should().BeOfType<string>();
         }
 
         [Fact]
         public void FlightDataPriceIsAnInteger()
         {
-            Assert.IsType<int>(flightData.price);
+            Assert.IsType<int>(flightData.Price);
         }
 
         [Fact]
         public void FlightDataDepartureDataIsAString()
         {
-            flightData.departure_date.Should().BeOfType<string>();
+            flightData.DepartureDate.Should().BeOfType<string>();
         }
 
         [Fact]
         public void HotelDataIDIsAnInteger()
         {
-            Assert.IsType<int>(hotelData.id);
+            Assert.IsType<int>(hotelData.ID);
         }
 
         [Fact]
         public void HotelDataNameIsAString()
         {
-            hotelData.name.Should().BeOfType<string>();
+            hotelData.Name.Should().BeOfType<string>();
         }
 
         [Fact]
         public void HotelDataArrivalDateIsAString()
         {
-            hotelData.arrival_date.Should().BeOfType<string>();
+            hotelData.ArrivalDate.Should().BeOfType<string>();
         }
 
         [Fact]
         public void HotelDataPricePerNightIsAnInt()
         {
-            Assert.IsType<int>(hotelData.pricepernight);
+            Assert.IsType<int>(hotelData.PricePerNight);
         }
 
         [Fact]
         public void HotelDataLocalAirportsIsAStringArray()
         {
-            hotelData.local_airports.Should().BeOfType<string[]>();
+            hotelData.LocalAirports.Should().BeOfType<string[]>();
         }
 
         [Fact]
         public void HotelDataNightsIsAnInteger()
         {
-            Assert.IsType<int>(hotelData.nights);
+            Assert.IsType<int>(hotelData.Nights);
         }
 
         [Fact]
