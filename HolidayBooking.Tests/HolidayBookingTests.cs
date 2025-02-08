@@ -25,79 +25,61 @@ namespace HolidayBooking.Tests
                                             'nights': 7
                                             }";
 
+        FlightData flightData = JsonConvert.DeserializeObject<FlightData>(flightDataTestJSON);
 
+        HotelData hotelData = JsonConvert.DeserializeObject<HotelData>(hotelDataTestJSON);
 
         [Fact]
         public void DeserializeFlightDataJSONTest()
         {
-            FlightData flightData = JsonConvert.DeserializeObject<FlightData>(flightDataTestJSON);
-
             flightData.Should().NotBeNull();
         }
 
         [Fact]
         public void DeserializeHotelDataJSONTest()
         {
-            HotelData hotelData = JsonConvert.DeserializeObject<HotelData>(hotelDataTestJSON);
-
             hotelData.Should().NotBeNull();
         }
 
         [Fact]
         public void FlightDataIDIsAnInteger()
         {
-            FlightData flightData = JsonConvert.DeserializeObject<FlightData>(flightDataTestJSON);
-
-            //flightData.id.Should().BeOfType<int>();
             Assert.IsType<int>(flightData.id);
         }
 
         [Fact]
         public void FlightDataAirlineIsAString()
         {
-            FlightData flightData = JsonConvert.DeserializeObject<FlightData>(flightDataTestJSON);
-
             flightData.airline.Should().BeOfType<string>();
         }
 
         [Fact]
         public void FlightDataFromIsAString()
         {
-            FlightData flightData = JsonConvert.DeserializeObject<FlightData>(flightDataTestJSON);
-
             flightData.from.Should().BeOfType<string>();
         }
 
         [Fact]
         public void FlightDataToIsAString()
         {
-            FlightData flightData = JsonConvert.DeserializeObject<FlightData>(flightDataTestJSON);
-
             flightData.to.Should().BeOfType<string>();
         }
 
         [Fact]
         public void FlightDataPriceIsAnInteger()
         {
-            FlightData flightData = JsonConvert.DeserializeObject<FlightData>(flightDataTestJSON);
-
             Assert.IsType<int>(flightData.price);
         }
 
         [Fact]
         public void FlightDataDepartureDataIsAString()
         {
-            FlightData flightData = JsonConvert.DeserializeObject<FlightData>(flightDataTestJSON);
-
             flightData.departure_date.Should().BeOfType<string>();
         }
 
         [Fact]
         public void HotelDataIDIsAnInteger()
         {
-            HotelData hotelData = JsonConvert.DeserializeObject<HotelData>(hotelDataTestJSON);
-
-            //hotelData.id.Should().Be(typeof(int));
             Assert.IsType<int>(hotelData.id);
         }
 
