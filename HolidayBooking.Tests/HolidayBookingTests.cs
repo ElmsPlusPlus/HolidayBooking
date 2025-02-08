@@ -83,6 +83,35 @@ namespace HolidayBooking.Tests
             Assert.IsType<int>(hotelData.id);
         }
 
+        [Fact]
+        public void HotelDataNameIsAString()
+        {
+            hotelData.name.Should().BeOfType<string>();
+        }
+
+        [Fact]
+        public void HotelDataArrivalDateIsAString()
+        {
+            hotelData.arrival_date.Should().BeOfType<string>();
+        }
+
+        [Fact]
+        public void HotelDataPricePerNightIsAnInt()
+        {
+            Assert.IsType<int>(hotelData.pricepernight);
+        }
+
+        [Fact]
+        public void HotelDataLocalAirportsIsAStringArray()
+        {
+            hotelData.local_airports.Should().BeOfType<string[]>();
+        }
+
+        [Fact]
+        public void HotelDataNightsIsAnInteger()
+        {
+            Assert.IsType<int>(hotelData.nights);
+        }
         private class FlightData
         {
             public int id { get; set; }
@@ -96,6 +125,11 @@ namespace HolidayBooking.Tests
         private class HotelData
         { 
             public int id { get; set; }
+            public string name { get; set; }
+            public string arrival_date { get; set; }
+            public int pricepernight { get; set; }
+            public string[] local_airports { get; set; }
+            public int nights { get; set; }
         }
     }
 }
