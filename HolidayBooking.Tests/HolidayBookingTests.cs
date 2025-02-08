@@ -2,6 +2,8 @@ using Newtonsoft.Json;
 using FluentAssertions;
 using Xunit.Sdk;
 using System.Runtime.Serialization;
+using System.Collections.Generic;
+using System.Data;
 
 namespace HolidayBooking.Tests
 {
@@ -111,6 +113,38 @@ namespace HolidayBooking.Tests
         public void HotelDataNightsIsAnInteger()
         {
             Assert.IsType<int>(hotelData.nights);
+        }
+
+        [Fact]
+        public void LoadFlightDataFromFile()
+        {
+            string flightsDataString = System.IO.File.ReadAllText("Flights_Data.json");
+
+            FlightsData flightsData = JsonConvert.DeserializeObject<FlightsData>(flightsDataString);
+
+            flightsData.Flights.Should().NotBeNull();
+        }
+
+        [Fact]
+        public void LoadHotelDataFromFile()
+        {
+            string hotelsDataString = System.IO.File.ReadAllText("Hotel_Data.json");
+
+            HotelsData hotelsData = JsonConvert.DeserializeObject<HotelsData>(hotelsDataString);
+
+            hotelsData.Hotels.Should().NotBeNull();
+        }
+
+        public class FlightsData
+        {
+            [JsonProperty("Flight_Data")]
+            public List<FlightData> Flights { get; set; }
+        }
+
+        public class HotelsData
+        {
+            [JsonProperty("Hotel_Data")]
+            public List<HotelData> Hotels { get; set; }
         }
     }
 }
