@@ -151,14 +151,14 @@ namespace HolidayBooking.Tests
         }
 
         [Theory]
-        [InlineData("AGP", "2023-07-01")]
-        public void HotelDataSearch(string airport, string arrivalDate)
+        [InlineData("AGP", "2023-07-01", 7)]
+        public void HotelDataSearch(string airport, string arrivalDate, int nights)
         {
             string hotelsDataString = System.IO.File.ReadAllText("Hotel_Data.json");
 
             HotelsData hotelsData = JsonConvert.DeserializeObject<HotelsData>(hotelsDataString);
 
-            HotelData bestHotel = hotelsData.SearchHotels(airport, arrivalDate);
+            HotelData bestHotel = hotelsData.SearchHotels(airport, arrivalDate, nights);
 
             bestHotel.LocalAirports.Contains(airport).Should().BeTrue();
             bestHotel.ArrivalDate.Should().Be(arrivalDate);
