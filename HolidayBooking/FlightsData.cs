@@ -7,24 +7,22 @@ namespace HolidayBooking.Tests
         [JsonProperty("Flight_Data")]
         public List<FlightData> Flights { get; set; }
 
-        public FlightData SearchFlights(string from, string to, string departureDate)
+        public List<FlightData> SearchFlights(string from, string to, string departureDate)
         {
-            FlightData bestFlight = null;
+            List<FlightData> matchingFlights = new List<FlightData>();
 
             foreach (var flight in Flights)
             { 
                 if(flight.From == from && flight.To == to && flight.DepartureDate == departureDate)
                 {
-                    if (bestFlight == null) { bestFlight = flight; }
-                    else if(flight.Price < bestFlight.Price)
-                    {
-                        bestFlight = flight;
-                    }
+                    matchingFlights.Add(flight);
                 }
             }
 
+            matchingFlights.Sort((fl1, fl2) => fl1.Price.CompareTo(fl2.Price));
+
             // TODO: Create exception or special return type no matching flight is available.
-            return bestFlight;
+            return matchingFlights;
         }
     }
 }

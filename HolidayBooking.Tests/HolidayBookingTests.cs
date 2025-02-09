@@ -143,11 +143,11 @@ namespace HolidayBooking.Tests
 
             FlightsData flightsData = JsonConvert.DeserializeObject<FlightsData>(flightsDataString);
 
-            FlightData bestFlight = flightsData.SearchFlights(from, to, departureDate);
+            List<FlightData> bestFlights = flightsData.SearchFlights(from, to, departureDate);
 
-            bestFlight.From.Should().Be(from);
-            bestFlight.To.Should().Be(to);
-            bestFlight.DepartureDate.Should().Be(departureDate);
+            bestFlights.First().From.Should().Be(from);
+            bestFlights.First().To.Should().Be(to);
+            bestFlights.First().DepartureDate.Should().Be(departureDate);
         }
 
         [Theory]
@@ -158,10 +158,10 @@ namespace HolidayBooking.Tests
 
             HotelsData hotelsData = JsonConvert.DeserializeObject<HotelsData>(hotelsDataString);
 
-            HotelData bestHotel = hotelsData.SearchHotels(airport, arrivalDate, nights);
+            List<HotelData> bestHotels = hotelsData.SearchHotels(airport, arrivalDate, nights);
 
-            bestHotel.LocalAirports.Contains(airport).Should().BeTrue();
-            bestHotel.ArrivalDate.Should().Be(arrivalDate);
+            bestHotels.First().LocalAirports.Contains(airport).Should().BeTrue();
+            bestHotels.First().ArrivalDate.Should().Be(arrivalDate);
         }
     }
 }
