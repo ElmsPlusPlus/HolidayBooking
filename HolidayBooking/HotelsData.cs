@@ -6,5 +6,10 @@ namespace HolidayBooking.Tests
     {
         [JsonProperty("Hotel_Data")]
         public List<HotelData> Hotels { get; set; }
+
+        public HotelData SearchHotels(string airport, string arrivalDate)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

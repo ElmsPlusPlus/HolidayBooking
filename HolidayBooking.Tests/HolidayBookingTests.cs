@@ -134,5 +134,34 @@ namespace HolidayBooking.Tests
 
             hotelsData.Hotels.Should().NotBeNull();
         }
+
+        [Theory]
+        [InlineData ("MAN","AGP","2023-07-01")]
+        public void FlightsDataSearch(string from, string to, string departureDate)
+        {
+            string flightsDataString = System.IO.File.ReadAllText("Flights_Data.json");
+
+            FlightsData flightsData = JsonConvert.DeserializeObject<FlightsData>(flightsDataString);
+
+            FlightData bestFlight = flightsData.SearchFlights(from, to, departureDate);
+
+            bestFlight.From.Should().Be(from);
+            bestFlight.To.Should().Be(to);
+            bestFlight.DepartureDate.Should().Be(departureDate);
+        }
+
+        [Theory]
+        [InlineData("AGP", "2023-07-01")]
+        public void HotelDataSearch(string airport, string arrivalDate)
+        {
+            string hotelsDataString = System.IO.File.ReadAllText("Hotel_Data.json");
+
+            HotelsData hotelsData = JsonConvert.DeserializeObject<HotelsData>(hotelsDataString);
+
+            HotelData bestHotel = hotelsData.SearchHotels(airport, arrivalDate);
+
+            bestHotel.LocalAirports.Contains(airport).Should().BeTrue();
+            bestHotel.ArrivalDate.Should().Be(arrivalDate);
+        }
     }
 }

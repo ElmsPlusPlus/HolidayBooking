@@ -6,5 +6,10 @@ namespace HolidayBooking.Tests
     {
         [JsonProperty("Flight_Data")]
         public List<FlightData> Flights { get; set; }
+
+        public FlightData SearchFlights(string from, string to, string departureDate)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
