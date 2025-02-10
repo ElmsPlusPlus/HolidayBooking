@@ -45,7 +45,20 @@ namespace HolidayBooking
 
         public List<FlightData> SearchFLightsMultipleDepartureOptions(string[] departureOptions, string to, string departureDate)
         {
-            throw new NotImplementedException();
+            List<FlightData> matchingFlights = new List<FlightData>();
+
+            foreach (var flight in Flights)
+            {
+                if (departureOptions.Contains(flight.From) && flight.To == to && flight.DepartureDate == departureDate)
+                {
+                    matchingFlights.Add(flight);
+                }
+            }
+
+            matchingFlights.Sort((fl1, fl2) => fl1.Price.CompareTo(fl2.Price));
+
+            // TODO: Create exception or special return type no matching flight is available.
+            return matchingFlights;
         }
     }
 }

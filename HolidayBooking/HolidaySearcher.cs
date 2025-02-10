@@ -12,6 +12,8 @@ namespace HolidayBooking
         private FlightsData flightsData;
         private HotelsData hotelsData;
 
+        string[] LondonAirports = { "LCY", "LHR", "LGW", "LTN","STN", "SEN" };
+
         public HolidaySearcher(string flightsDataFile, string hotelsDataFile)
         {
             string flightsDataString = System.IO.File.ReadAllText(flightsDataFile);
@@ -38,7 +40,14 @@ namespace HolidayBooking
             {
                 string[] departureOptions = {"","" };
 
-                bestFlights = flightsData.SearchFLightsMultipleDepartureOptions(departureOptions, to, date);
+                if(from.ToLower() == "london")
+                {
+                    bestFlights = flightsData.SearchFLightsMultipleDepartureOptions(LondonAirports, to, date);
+                }
+                else
+                {
+                    bestFlights = flightsData.SearchFLightsMultipleDepartureOptions(departureOptions, to, date);
+                } 
             }
 
             List<HotelData> bestHotels = hotelsData.SearchHotels(to, date, nights);
