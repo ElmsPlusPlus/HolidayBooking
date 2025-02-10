@@ -26,7 +26,7 @@ namespace HolidayBooking
             cityAirportsDataManager = airportsDataManager;
         }
 
-        public HolidaySearchResults Search(string from, string to, string date, int nights)
+        public HolidaySearchResults Search(string from, string to, DateTime date, int nights)
         {
             List<FlightData> bestFlights;
 

@@ -76,7 +76,8 @@ namespace HolidayBooking.Tests
         [Fact]
         public void FlightDataDepartureDataIsAString()
         {
-            flightData.DepartureDate.Should().BeOfType<string>();
+            //flightData.DepartureDate.Should().BeOfType<string>();
+            Assert.IsType<DateTime>(flightData.DepartureDate);
         }
 
         [Fact]
@@ -94,7 +95,8 @@ namespace HolidayBooking.Tests
         [Fact]
         public void HotelDataArrivalDateIsAString()
         {
-            hotelData.ArrivalDate.Should().BeOfType<string>();
+            //hotelData.ArrivalDate.Should().BeOfType<DateTime>();
+            Assert.IsType<DateTime>(hotelData.ArrivalDate);
         }
 
         [Fact]
@@ -137,7 +139,7 @@ namespace HolidayBooking.Tests
 
         [Theory]
         [InlineData ("MAN","AGP","2023-07-01")]
-        public void FlightsDataSearch(string from, string to, string departureDate)
+        public void FlightsDataSearch(string from, string to, DateTime departureDate)
         {
             string flightsDataString = System.IO.File.ReadAllText("Flights_Data.json");
 
@@ -152,7 +154,7 @@ namespace HolidayBooking.Tests
 
         [Theory]
         [InlineData("AGP", "2023-07-01", 7)]
-        public void HotelDataSearch(string airport, string arrivalDate, int nights)
+        public void HotelDataSearch(string airport, DateTime arrivalDate, int nights)
         {
             string hotelsDataString = System.IO.File.ReadAllText("Hotel_Data.json");
 
@@ -168,7 +170,7 @@ namespace HolidayBooking.Tests
         [InlineData("MAN","AGP","2023-07-01", 7,2,9)]
         [InlineData("London", "PMI", "2023-06-15", 10, 6, 5)]
         [InlineData("", "LPA", "2022-11-10", 14, 7, 6)]
-        public void SpecifiedDepatureHolidaySearch(string from, string to, string date, int nights, int flightID, int hotelID)
+        public void SpecifiedDepatureHolidaySearch(string from, string to, DateTime date, int nights, int flightID, int hotelID)
         {
             CityAirportsDataManager cityAirportsDataManager = new CityAirportsDataManager();
 

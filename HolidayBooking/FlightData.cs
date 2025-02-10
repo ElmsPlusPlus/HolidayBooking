@@ -15,6 +15,6 @@ namespace HolidayBooking
         [JsonProperty("price")]
         public int Price { get; set; }
         [JsonProperty("departure_date")]
-        public string DepartureDate { get; set; }
+        public DateTime DepartureDate { get; set; }
     }
 }

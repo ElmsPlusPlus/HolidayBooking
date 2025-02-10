@@ -9,7 +9,7 @@ namespace HolidayBooking
         [JsonProperty("name")]
         public string Name { get; set; }
         [JsonProperty("arrival_date")]
-        public string ArrivalDate { get; set; }
+        public DateTime ArrivalDate { get; set; }
         [JsonProperty("price_per_night")]
         public int PricePerNight { get; set; }
         [JsonProperty("local_airports")]

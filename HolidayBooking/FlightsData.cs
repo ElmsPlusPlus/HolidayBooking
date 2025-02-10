@@ -7,7 +7,7 @@ namespace HolidayBooking
         [JsonProperty("Flight_Data")]
         public List<FlightData> Flights { get; set; }
 
-        public List<FlightData> SearchFlights(string from, string to, string departureDate)
+        public List<FlightData> SearchFlights(string from, string to, DateTime departureDate)
         {
             List<FlightData> matchingFlights = new List<FlightData>();
 
@@ -25,7 +25,7 @@ namespace HolidayBooking
             return matchingFlights;
         }
 
-        public List<FlightData> SearchFlightsAnyDeparture(string to, string departureDate)
+        public List<FlightData> SearchFlightsAnyDeparture(string to, DateTime departureDate)
         {
             List<FlightData> matchingFlights = new List<FlightData>();
 
@@ -43,7 +43,7 @@ namespace HolidayBooking
             return matchingFlights;
         }
 
-        public List<FlightData> SearchFLightsMultipleDepartureOptions(List<string> departureOptions, string to, string departureDate)
+        public List<FlightData> SearchFLightsMultipleDepartureOptions(List<string> departureOptions, string to, DateTime departureDate)
         {
             List<FlightData> matchingFlights = new List<FlightData>();
 

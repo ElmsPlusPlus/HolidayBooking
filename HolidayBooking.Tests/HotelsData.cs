@@ -7,7 +7,7 @@ namespace HolidayBooking
         [JsonProperty("Hotel_Data")]
         public List<HotelData> Hotels { get; set; }
 
-        public List<HotelData> SearchHotels(string airport, string arrivalDate, int nights)
+        public List<HotelData> SearchHotels(string airport, DateTime arrivalDate, int nights)
         {
             List<HotelData> matchingHotels = new List<HotelData>();
 
