@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace HolidayBooking.Tests
+namespace HolidayBooking
 {
     public class FlightsData
     {

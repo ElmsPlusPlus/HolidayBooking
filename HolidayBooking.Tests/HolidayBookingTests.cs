@@ -163,5 +163,17 @@ namespace HolidayBooking.Tests
             bestHotels.First().LocalAirports.Contains(airport).Should().BeTrue();
             bestHotels.First().ArrivalDate.Should().Be(arrivalDate);
         }
+
+        [Theory]
+        [InlineData ("MAN","AGP","2023-07-01", 7,2,9)]
+        public void SpecifiedDepatureHolidaySearch(string from, string to, string date, int nights, int flightID, int hotelID)
+        {
+            HolidaySearcher holidaySearch = new HolidaySearcher("Flights_Data.json", "Hotel_Data_File.json");
+
+            HolidaySearchResults holidaySearchResults = holidaySearch.Search(from, to, date, nights);
+
+            holidaySearchResults.Flights.First().ID.Should().Be(flightID);
+            holidaySearchResults.Hotels.First().ID.Should().Be(hotelID);
+        }
     }
 }
