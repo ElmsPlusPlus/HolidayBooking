@@ -24,7 +24,23 @@ namespace HolidayBooking
 
         public HolidaySearchResults Search(string from, string to, string date, int nights)
         {
-            List<FlightData> bestFlights = flightsData.SearchFlights(from, to, date);
+            List<FlightData> bestFlights;
+
+            if (from == "" || from == string.Empty || from == null)
+            {
+                bestFlights = flightsData.SearchFlightsAnyDeparture(to, date);
+            }
+            else if(from.All(char.IsUpper) && from.Length == 3) // Airport code is 3 letters all capitals so will always represent a single airport.
+            {
+                bestFlights = flightsData.SearchFlights(from, to, date);
+            }
+            else
+            {
+                string[] departureOptions = {"","" };
+
+                bestFlights = flightsData.SearchFLightsMultipleDepartureOptions(departureOptions, to, date);
+            }
+
             List<HotelData> bestHotels = hotelsData.SearchHotels(to, date, nights);
 
             return new HolidaySearchResults(bestFlights, bestHotels);

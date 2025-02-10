@@ -24,5 +24,15 @@ namespace HolidayBooking
             // TODO: Create exception or special return type no matching flight is available.
             return matchingFlights;
         }
+
+        public List<FlightData> SearchFlightsAnyDeparture(string to, string date)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<FlightData> SearchFLightsMultipleDepartureOptions(string[] departureOptions, string to, string date)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
