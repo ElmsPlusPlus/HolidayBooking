@@ -12,9 +12,9 @@ namespace HolidayBooking
         private FlightsData flightsData;
         private HotelsData hotelsData;
 
-        string[] LondonAirports = { "LCY", "LHR", "LGW", "LTN","STN", "SEN" };
+        CityAirportsDataManager cityAirportsDataManager;
 
-        public HolidaySearcher(string flightsDataFile, string hotelsDataFile)
+        public HolidaySearcher(string flightsDataFile, string hotelsDataFile, CityAirportsDataManager airportsDataManager)
         {
             string flightsDataString = System.IO.File.ReadAllText(flightsDataFile);
             string hotelsDataString = System.IO.File.ReadAllText(hotelsDataFile);
@@ -22,6 +22,8 @@ namespace HolidayBooking
             flightsData = JsonConvert.DeserializeObject<FlightsData>(flightsDataString);
 
             hotelsData = JsonConvert.DeserializeObject<HotelsData>(hotelsDataString);
+
+            cityAirportsDataManager = airportsDataManager;
         }
 
         public HolidaySearchResults Search(string from, string to, string date, int nights)
@@ -38,7 +40,9 @@ namespace HolidayBooking
             }
             else
             {
-                string[] departureOptions = {"","" };
+                bestFlights = flightsData.SearchFLightsMultipleDepartureOptions(cityAirportsDataManager.GetCityAirports(from.ToLower()), to, date);
+
+                /*string[] departureOptions = {"","" };
 
                 if(from.ToLower() == "london")
                 {
@@ -47,7 +51,7 @@ namespace HolidayBooking
                 else
                 {
                     bestFlights = flightsData.SearchFLightsMultipleDepartureOptions(departureOptions, to, date);
-                } 
+                } */
             }
 
             List<HotelData> bestHotels = hotelsData.SearchHotels(to, date, nights);

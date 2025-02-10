@@ -170,7 +170,9 @@ namespace HolidayBooking.Tests
         [InlineData("", "LPA", "2022-11-10", 14, 7, 6)]
         public void SpecifiedDepatureHolidaySearch(string from, string to, string date, int nights, int flightID, int hotelID)
         {
-            HolidaySearcher holidaySearch = new HolidaySearcher("Flights_Data.json", "Hotel_Data.json");
+            CityAirportsDataManager cityAirportsDataManager = new CityAirportsDataManager();
+
+            HolidaySearcher holidaySearch = new HolidaySearcher("Flights_Data.json", "Hotel_Data.json", cityAirportsDataManager);
 
             HolidaySearchResults holidaySearchResults = holidaySearch.Search(from, to, date, nights);
 

@@ -43,7 +43,7 @@ namespace HolidayBooking
             return matchingFlights;
         }
 
-        public List<FlightData> SearchFLightsMultipleDepartureOptions(string[] departureOptions, string to, string departureDate)
+        public List<FlightData> SearchFLightsMultipleDepartureOptions(List<string> departureOptions, string to, string departureDate)
         {
             List<FlightData> matchingFlights = new List<FlightData>();
 
